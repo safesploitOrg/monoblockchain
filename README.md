@@ -1,3 +1,5 @@
+[MonoBlockchain](https://github.com/safesploit/MonoBlockchain)
+
 # MonoBlockchain
 
 
@@ -95,7 +97,7 @@ The attack vector of computing forged blocks is demonstrated below:
   <b>Distributed P2P Network Being Attacked</b>
 </p>
 
-However, for the example above, seven nodes maintain an independent version of the ledger. Moreover, while the attacker has successfully modified blocks and forged the ledger to reflect an action which did not take place cryptographically of a single node, the attacker only makes up 14% of the distributed P2P network. For the attacker to successfully perform their attack, they must control 51% or more of the network's nodes. 
+However, for the example above, seven nodes maintain an independent version of the ledger. Moreover, while the attacker has successfully modify blocks and forged the ledger cryptographically to reflect an action which did not take place. However, the attack did this for a single node. Hence, the attacker only makes up 14% of the distributed P2P network. For the attacker to successfully perform their attack, they must control 51% or more of the network's nodes. 
 
 See, [51% attack](https://www.investopedia.com/terms/1/51-attack.asp#:~:text=A%2051%25%20attack%20is%20an,other%20miners%20from%20completing%20blocks.).
 
