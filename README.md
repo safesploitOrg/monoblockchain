@@ -1,6 +1,8 @@
-[MonoBlockchain](https://github.com/safesploit/MonoBlockchain)
-
 # MonoBlockchain
+
+MonoBlockchain is a decentralised proof of work cryptocurrency written in Python3. 
+
+Individually referred to as an _MB Coin_ (Mono Block Coin).
 
 
 
@@ -20,21 +22,28 @@
 
 [Markdown TOC](https://luciopaiva.com/markdown-toc/)
 # Table of Contents
-
-- [Setup Instructions](#setup-instructions)
+- [Setup and Usage](#setup-and-usage)
   - [Python Imports](#python-imports)
-- [Design Choices](#design-choices)
+- [Blockchain Concepts](#blockchain-concepts)
+  - [Proof of Work](#proof-of-work)
+  - [Hashing Algorithm](#hashing-algorithm)
+  - [Immutable Ledger](#immutable-ledger)
+  - [Distributed P2P](#distributed-p2p)
+  - [Mining](#mining)
+  - [Consensus Protocol](#consensus-protocol)
+- [Programming Logic](#programming-logic)
+  - [How Mining Works (Technical)](#how-mining-works-technical)
 - [Preview Images](#preview-images)
 - [Preview Video](#preview-video)
 
-https://toc.git.safesploit.com/
+[ToC Markdown Generator](https://toc.git.safesploit.com)
 # Setup and Usage
 
 ## Python Imports
 
     pip install Crypto
 
-# Programming Logic
+# Blockchain Concepts
 
 ## Proof of Work
 
@@ -44,9 +53,9 @@ MonoBlockchain is based on Proof of Work (PoW), _explanation_.
 
 PoW relies on SHA256 due to requiring:
   - One-way function
-  - Deterministic
+    - [The avalanche effect](https://www.cryptovision.com/en/glossary/avalanche-effect/#:~:text=The%20Avalanche%20Effect%20refers%20to,show%20a%20strong%20avalanche%20effect.)
+    - [Deterministic](https://www.sqlite.org/deterministic.html#:~:text=A%20deterministic%20function%20always%20gives,input%20X%20is%20the%20same.)
   - Fast computation
-  - The avalanche effect
   - Must withstand collisions (SHA-256 has 2<sup>256</sup> combinations)
 
 ## Immutable Ledger
@@ -63,7 +72,7 @@ If _block 2_ were to be maliciously altered, the previous hash on _block 3_ woul
 
 ## Distributed P2P
 
-### explanation
+### Explanation of Distributed P2P
 
 Distributed peer-to-peer (P2P) network ensures the network hosting the blockchain ledger is not centralised located. 
 
@@ -103,6 +112,36 @@ See, [51% attack](https://www.investopedia.com/terms/1/51-attack.asp#:~:text=A%2
 
 ## Mining
 
+Mining is the competitive process that verifies and adds new transactions to the blockchain for a cryptocurrency that uses the proof of work (PoW) method. The miner that wins the competition is rewarded with some amount of the currency and/or transaction fees - [source](https://www.pcmag.com/encyclopedia/term/crypto-mining#:~:text=(CRYPTOcurrency%20mining)%20The%20competitive%20process,currency%20and%2For%20transaction%20fees.).
+
+Consider further reading [PoW - Wikipedia](https://en.wikipedia.org/wiki/Proof_of_work).
+
+The main point with mining is _hard to solve, easy to verify_.
+
+
+### Explanation of How Mining Works (Abstract)
+[Bitcoin Mining in 4 Minutes - Computerphile](https://www.youtube.com/watch?v=wTC31ZI6QM4) will give a ver clear outline of Bitcoin mining. MonoBlockchain is based on the same concept and the PoW hashing algorithm is also SHA-256. So, there is little difference from a mining perspective between Bitcoin and MonoBlockchain.
+
+[Nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce) (number once) is an arbitrary number that can be used just once in a cryptographic communication. The nonce is used to ensure old communications cannot be reused.
+
+<p align="center">
+  <img width="464" alt="Abstract Overview of a Block" src="https://user-images.githubusercontent.com/10171446/172814804-7b06b2ad-6641-44d7-9034-cdc395bd8867.png">
+  </br>
+  <b>Abstract Overview of a Block</b>
+</p>
+
+
+
+### Why is Mining Necessary?
+
+The short answer is to prevent abuse of the network. Requiring computational power to _prove work_ is a logical method for mitigating DoS attacks while still keeping the usage of the network feasible.
+
+
+<p align="center">
+  
+  </br>
+  <b></b>
+</p>
 
 
 <p align="center">
@@ -113,11 +152,49 @@ See, [51% attack](https://www.investopedia.com/terms/1/51-attack.asp#:~:text=A%2
 
 ## Consensus Protocol
 
+The purpose of a consensus protocol is to achieve consensus between participants as to what a blockchain should contain at a given time (including new blocks).
+
+### First Challenege
+
+Referring back to _Attacking Distributed P2P Network_, we saw the attacker achieved a tampered version of the blockchain, but only contributed 14% of the entire distributed network. The other 86% naturally outnumbered the malicious blockchain node. 
+
+
+### Second Challenege
+
+Because each node in the distributed P2P network will mine the next block independently, a problem arises; overlapping nodes during synchronisation.
+
+<p align="center">
+  <img width="661" alt="Second Challenege to Overcome" src="https://user-images.githubusercontent.com/10171446/173308045-ce98925e-ed15-4c2d-a586-6266bbd8b0fb.png">
+  </br>
+  <b>Consensus Protocol - Second Challenege: Overlapping Nodes</b>
+</p>
+
+The consensus to avoid overlapping nodes is to wait for a new block to be mined before synchronising with other nodes in the network. Once a node has mined a new block, the other nodes will be asked to add it to their blockchain.
+
+Essentially, _the longest chain wins_ is an consensus between nodes.
+
+#### Orphan Block
+
+Another issue to be considered as a user of a blockchain PoW network are orphan blocks.
+
+An [orphan block](https://www.investopedia.com/terms/o/orphan-block-cryptocurrency.asp#:~:text=An%20orphan%20block%20is%20a,the%20shorter%20chain%20are%20orphaned.) is a block that has been solved within the blockchain network but was not accepted by the network.
+
+An orphan block can occur because, _there can be two miners who solve valid blocks simultaneously. The network uses both blocks until one chain has more verified blocks than the other. Then, the blocks in the shorter chain are orphaned._
+
+Ideally, to avoid falling victim to an orphan block, users would be adviced to wait 4-6 blocks after their transaction was verified, before considering the transaction as 'full' verified.
+
+
 <p align="center">
   
   </br>
   <b></b>
 </p>
+
+# Programming Logic
+
+## How Mining Works (Technical)
+
+
 
 # Preview Images
 
