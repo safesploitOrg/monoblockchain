@@ -1,3 +1,5 @@
+[MonoBlockchain](https://github.com/safesploit/MonoBlockchain)
+
 # MonoBlockchain
 
 MonoBlockchain is a decentralised proof of work cryptocurrency written in Python3. 
@@ -20,10 +22,11 @@ Individually referred to as an _MB Coin_ (Mono Block Coin).
 - API
 - Easy to use transaction system
 
-[Markdown TOC](https://luciopaiva.com/markdown-toc/)
 # Table of Contents
 - [Setup and Usage](#setup-and-usage)
-  - [Python Imports](#python-imports)
+  - [Python Version](#python-version)
+  - [Dependencies](#dependencies)
+  - [Initialising Servers](#initialising-servers)
 - [Blockchain Concepts](#blockchain-concepts)
   - [Proof of Work](#proof-of-work)
   - [Hashing Algorithm](#hashing-algorithm)
@@ -33,15 +36,103 @@ Individually referred to as an _MB Coin_ (Mono Block Coin).
   - [Consensus Protocol](#consensus-protocol)
 - [Programming Logic](#programming-logic)
   - [How Mining Works (Technical)](#how-mining-works-technical)
+  - [User Interface](#user-interface)
 - [Preview Images](#preview-images)
 - [Preview Video](#preview-video)
 
 [ToC Markdown Generator](https://toc.git.safesploit.com)
+
 # Setup and Usage
 
-## Python Imports
+## Python Version
 
-    pip install Crypto
+    $ python3.10
+    Python 3.10.5
+
+
+## Dependencies
+
+    pip3.10 install Crypto \
+                    Flask \
+
+
+
+## Initialising Servers
+
+Initialisation can be done in two-ways. One is via PyCharm the other is running multiple Python instances via the command-line.
+
+### PyCharm
+
+#### Node1 (Server)
+
+Within PyCharm under _Run/Debug Configurations > Add New Configuration > Python_ the following Configuration should be chosen:
+
+  - Name: Node1
+  - Script path: ~/PycharmProjects/MonoBlockchain/blockchain/blockchain.py
+  - Parameters: _Leave this blank
+  - Python interpreter: Python 3.10
+
+  <p align="center">
+  <img width="1348" alt="PyCharm Configuration Node1" src="https://user-images.githubusercontent.com/10171446/174770301-9f283c31-851c-4e78-bf2a-b0a04b3527a9.png">
+  </br>
+  <b>PyCharm Configuration Node1</b>
+</p>
+
+#### Alice (Client)
+
+  - Name: Alice
+  - Script path: ~/PycharmProjects/MonoBlockchain/blockchain_client/blockchain_client.py
+  - Parameters: -p 8081
+  - Python interpreter: Python 3.10
+
+<p align="center">
+  <img width="1196" alt="PyCharm Configuration Alice" src="https://user-images.githubusercontent.com/10171446/174770596-5742d253-496b-4357-a4a0-698de77659f8.png">
+  </br>
+  <b>PyCharm Configuration Alice</b>
+</p>
+
+#### Bob (Client)
+
+  - Name: Bob
+  - Script path: ~/PycharmProjects/MonoBlockchain/blockchain_client/blockchain_client.py
+  - Parameters: -p 8082
+  - Python interpreter: Python 3.10
+
+<p align="center">
+  <img width="1196" alt="PyCharm Configuration Bob" src="https://user-images.githubusercontent.com/10171446/174770973-8e59cb41-9e6b-4e30-a6f0-40350dd86935.png">
+  </br>
+  <b>PyCharm Configuration Bob</b>
+</p>
+
+#### Running the Configuration
+
+<p align="center">
+  <img width="1326" alt="PyCharm Configurations" src="https://user-images.githubusercontent.com/10171446/174771586-566e19c6-fb7c-4ddb-8dd8-31a17f7ac28e.png">
+
+  </br>
+  <b></b>
+</p>
+
+PyCharm Configurations are outlined in greater detail [here](https://www.jetbrains.com/help/pycharm/configuring-python-interpreter.html#packages).
+
+
+### Command-Line
+
+CMD.exe / Terminal / Shell
+
+#### Node1 (server)
+
+    $ python3 ~/MonoBlockchain/blockchain/blockchain.py
+
+
+#### Alice (client)
+
+    $ python3 ~/MonoBlockchain/blockchain-client/blockchain-client.py -p 8081
+
+#### Bob (client)
+
+    $ python3 ~/MonoBlockchain/blockchain-client/blockchain-client.py -p 8082
+
 
 # Blockchain Concepts
 
@@ -193,6 +284,27 @@ Ideally, to avoid falling victim to an orphan block, users would be adviced to w
 # Programming Logic
 
 ## How Mining Works (Technical)
+
+## User Interface
+
+To reduce development time with the user interface (UI), I have opted for using HTML with frameworks.
+
+### HTML
+
+
+### JavaScript
+
+### Frameworks
+
+The following frameworks are used:
+
+  - Bootstrap v4.0.0 
+  - DataTables 1.10.16
+  - Font Awesome 4.7.0 
+    - Font Awesome webfont
+  - jQuery JavaScript Library v3.3.1
+
+### CDNs and SRI Hashes
 
 
 
