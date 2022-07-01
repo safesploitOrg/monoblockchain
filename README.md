@@ -63,7 +63,7 @@ Individually referred to as an _MB Coin_ (Mono Block Coin).
                     Flask_CORS \ 
 
 
-### Client
+### Client
     pip3.10 install Crypto \
                     Flask \
                     PyCryptoDome \
