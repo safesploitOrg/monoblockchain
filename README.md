@@ -37,6 +37,8 @@ Individually referred to as an _MB Coin_ (Mono Block Coin).
 - [Programming Logic](#programming-logic)
   - [How Mining Works (Technical)](#how-mining-works-technical)
   - [User Interface](#user-interface)
+  - [Encoding](#encoding)
+  - [Verification](#verification)
 - [Preview Images](#preview-images)
 - [Preview Video](#preview-video)
 
@@ -52,10 +54,19 @@ Individually referred to as an _MB Coin_ (Mono Block Coin).
 
 ## Dependencies
 
+
+
+### Node (Server)
     pip3.10 install Crypto \
                     Flask \
+                    PyCryptoDome \
+                    Flask_CORS \ 
 
 
+### Client
+    pip3.10 install Crypto \
+                    Flask \
+                    PyCryptoDome \
 
 ## Initialising Servers
 
@@ -287,12 +298,24 @@ Ideally, to avoid falling victim to an orphan block, users would be adviced to w
 
 ## User Interface
 
-To reduce development time with the user interface (UI), I have opted for using HTML with frameworks.
+To reduce development time with the user interface (UI), I have opted for using HTML with frameworks and host via HTTP using the [render_template](https://flask.palletsprojects.com/en/2.1.x/quickstart/#rendering-templates) function in the `Flask` library.
 
 ### HTML
 
 
+
+
 ### JavaScript
+
+Within `blockchain_client/static/js/script.js` is the location for user written JavaScript which is contained within the `blockchain_client/templates/*`. The same logic applies for `blockcahin/static/js/script.js`.
+
+#### Blockchain Frontend
+
+Because of the length of a public key `30819f300d06092a864886f70d010101050003818d00308189028181009f148fb25857801a51cb3a294af9707b27ce92e99a7c65604210a4675b855dc7166127a651bc2ae47f38ce726e3b9aeb978b869d67fb0b4ed24bfbd31c8cc8fb289a8f986eca64a993db4426f6307f307e3139d648d44ad7428b487a79642a2c43783f48bf60f9795a848f182459b14bb9c41553f4d3363732b7786eb2589d270203010001` I decided to use JavaScript to render public keys longer than 25-characters using ellipsis for the transactions table.
+
+The following logic can be found in `blockchain/static/js/script.js`:
+
+    columnDefs: [{targets: [1,2,3,4,5], render: $.fn.dataTable.render.ellipsis(25)}]
 
 ### Frameworks
 
@@ -305,6 +328,64 @@ The following frameworks are used:
   - jQuery JavaScript Library v3.3.1
 
 ### CDNs and SRI Hashes
+
+CDNs have been used and where the CDN did not provide an SRI Hash for integrity checks of the href/src I manually created the [SRI Hash](https://www.srihash.org/).
+
+_Possibly_ in a future revision, CDN files will be loaded locally via './static/vendor/' and have a local copy instead.
+
+### Specifying Node on Client-Side
+
+Within `blockchain-client/template/make_transactions.html` the input tag contains `value="http://127.0.0.1:5001"`
+
+Do chnage the `value=""` as necessary.
+
+    <div class="row">
+      <label class="col-sm-12">Blockchain Node URL:</label>
+      <div class="col-sm-12">
+        <input type="text" name="node_url" id="node_url" rows="2" class="form-control" value="http://127.0.0.1:5001">
+      </div>
+    </div>
+
+
+The `value` is changeable when generating a transaction, as the client allows choosing which node to send the transaction to.
+
+<p align="center">
+  <img width="483" alt="Confirm Transaction Details" src="https://user-images.githubusercontent.com/10171446/175831064-0dd92807-06b9-4aac-b082-6458395c0af0.png">
+
+  </br>
+  <b>Make Transaction page displaying Confirm Transaction Details</b>
+</p>
+
+## Encoding
+Throughout the project when communicating between the node (server) and client data is passed via JSON. Because of this, data is converted into a String and then encoded.
+
+### Public-key
+
+Here the `hexlify` function is used.
+
+### Hash
+
+SHA-256 hashes are encoded using UTF-8, as indicated within `blockchain/blockchain.py`
+
+    def verify_transaction_signature(self, sender_public_key, signature, transaction):
+      ...
+      h = SHA.new(str(transaction).encode('utf8'))
+
+## Verification
+Because MonoBlockchain was developed for educational purposes some lightweight basic validation choices were made, which do not offer real-world protection.
+
+### New Transaction
+Within `blockchain/blockchain.py` the following logic for validating a new transaction has been implemented
+
+    def new_transaction():
+        values = request.form
+        required = ['confirmation_sender_public_key', 'confirmation_recipient_public_key', 'transaction_signature',
+                    'confirmation_amount']
+        if not all(k in values for k in required):
+            return 'Missing values', 400
+
+Please take care with `if not all(k in values for k in required):` as the logic was only to check if all values were present, nothing more. Erroneous values can be entered into the blockchain.
+
 
 
 
