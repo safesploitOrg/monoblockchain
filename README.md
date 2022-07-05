@@ -1,5 +1,3 @@
-[MonoBlockchain](https://github.com/safesploit/MonoBlockchain)
-
 # MonoBlockchain
 
 MonoBlockchain is a decentralised proof of work cryptocurrency written in Python3. 
@@ -14,13 +12,16 @@ Individually referred to as an _MB Coin_ (Mono Block Coin).
 
 # Features
 
-- Immutable ledger
-- Distributed P2P network
-- Proof of Work
-  - SHA256
-- Consensus protocol
-- API
-- Easy to use transaction system
+- Immutable Ledger
+- Distributed P2P Network
+- Proof of Work (SHA-256)
+- Consensus Protocol
+- Easy to Use Transaction System
+- HTML User Interface
+- Developer Friendly:
+  - API Based Backend
+  - Frameworks: Bootstrap, FontAwesome, jQuery
+
 
 # Table of Contents
 - [Setup and Usage](#setup-and-usage)
@@ -59,14 +60,14 @@ Individually referred to as an _MB Coin_ (Mono Block Coin).
 ### Node (Server)
     pip3.10 install Crypto \
                     Flask \
-                    PyCryptoDome \
                     Flask_CORS \ 
+                    PyCryptoDome
 
 
-### Client
+### Client
     pip3.10 install Crypto \
                     Flask \
-                    PyCryptoDome \
+                    PyCryptoDome
 
 ## Initialising Servers
 
@@ -316,6 +317,22 @@ Because of the length of a public key `30819f300d06092a864886f70d010101050003818
 The following logic can be found in `blockchain/static/js/script.js`:
 
     columnDefs: [{targets: [1,2,3,4,5], render: $.fn.dataTable.render.ellipsis(25)}]
+
+##### Transactions on the Blockchain
+
+Within `blockchain/static/js/script.js` is the timestamp for transactions
+
+    formattedTimestamp = date.toLocaleTimeString('en-GB', options);
+
+Currently the timezone is configured to British English `en-GB`, but feel free to change this, possibly to `UTC`.
+
+An outline of the `toLocaleTimeString()` function available via [Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString).
+
+##### Transactions on the Blockchain Client
+
+Similar behaviour is seen within `blockchain_client/static/js/script.js`
+
+    var formattedDateTime = date.toLocaleTimeString("en-GB", options);
 
 ### Frameworks
 
