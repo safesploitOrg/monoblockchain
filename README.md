@@ -81,14 +81,21 @@ Within PyCharm under _Run/Debug Configurations > Add New Configuration > Python_
 
   - Name: Node1
   - Script path: ~/PycharmProjects/MonoBlockchain/blockchain/blockchain.py
-  - Parameters: _Leave this blank
+  - Parameters: -p 5001
   - Python interpreter: Python 3.10
 
   <p align="center">
-  <img width="1348" alt="PyCharm Configuration Node1" src="https://user-images.githubusercontent.com/10171446/174770301-9f283c31-851c-4e78-bf2a-b0a04b3527a9.png">
+  <img width="1156" alt="PyCharm Configuration Node1" src="https://user-images.githubusercontent.com/10171446/177368870-a389d38d-8d70-47d7-a7ab-58efa73eb58e.png">
   </br>
   <b>PyCharm Configuration Node1</b>
 </p>
+
+#### Node2 (Server)
+
+  - Name: Node2
+  - Script path: ~/PycharmProjects/MonoBlockchain/blockchain/blockchain.py
+  - Parameters: -p 5002
+  - Python interpreter: Python 3.10
 
 #### Alice (Client)
 
