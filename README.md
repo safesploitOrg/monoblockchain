@@ -19,7 +19,7 @@ Individually referred to as an _MB Coin_ (Mono Block Coin).
 - Easy to Use Transaction System
 - HTML User Interface
 - Developer Friendly:
-  - API Based Backend
+  - API-Based Backend
   - Frameworks: Bootstrap, FontAwesome, jQuery
 
 
@@ -40,10 +40,18 @@ Individually referred to as an _MB Coin_ (Mono Block Coin).
   - [User Interface](#user-interface)
   - [Encoding](#encoding)
   - [Verification](#verification)
-- [Preview Images](#preview-images)
+- [Preview Images of the Blockchain Client](#preview-images-of-the-blockchain-client)
+  - [Alice Generating a Wallet](#alice-generating-a-wallet)
+  - [Bob Generating a Wallet](#bob-generating-a-wallet)
+  - [Making a Transaction](#making-a-transaction)
+  - [Successful Transaction](#successful-transaction)
+  - [Viewing Transactions](#viewing-transactions)
+- [Preview Images of the Blockchain Server](#preview-images-of-the-blockchain-server)
+  - [Viewing Transactions to be Mined](#viewing-transactions-to-be-mined)
+  - [Mining](#mining)
+  - [Configuring the Blockchain](#configuring-the-blockchain)
+  - [Syncing Node2 with Node1's Blockchain](#syncing-node2-with-node1s-blockchain)
 - [Preview Video](#preview-video)
-
-[ToC Markdown Generator](https://toc.git.safesploit.com)
 
 # Setup and Usage
 
@@ -413,6 +421,109 @@ Please take care with `if not all(k in values for k in required):` as the logic 
 
 
 
-# Preview Images
+# Preview Images of the Blockchain Client
+
+## Alice Generating a Wallet
+
+
+<p align="center">
+  <img width="1392" alt="image" src="https://user-images.githubusercontent.com/10171446/177380333-2307962e-1afd-46a4-b3e3-ec7980c8b916.png">
+  </br>
+  <b></b>
+</p>
+
+## Bob Generating a Wallet
+
+
+<p align="center">
+<img width="1392" alt="image" src="https://user-images.githubusercontent.com/10171446/177380535-cc431931-883c-46fe-9742-41400db6c597.png">
+  </br>
+  <b></b>
+</p>
+
+## Making a Transaction
+
+<p align="center">
+<img width="1392" alt="image" src="https://user-images.githubusercontent.com/10171446/177380770-9b6bdac2-b9b7-441a-98d1-e0063ed9fef3.png">
+
+</br>
+  <b>Alice Sending Bob 100 MB Coin</b>
+</p>
+
+<p align="center">
+<img width="1392" alt="image" src="https://user-images.githubusercontent.com/10171446/177380964-6cbcc98b-9ec8-483f-ac18-013e54ee0839.png">
+
+
+<img width="1392" alt="image" src="https://user-images.githubusercontent.com/10171446/177380770-9b6bdac2-b9b7-441a-98d1-e0063ed9fef3.png">
+</br>
+  <b></b>
+</p>
+
+
+## Successful Transaction
+
+
+<p align="center">
+<img width="1392" alt="image" src="https://user-images.githubusercontent.com/10171446/177381046-49c9118f-f1ae-4ae9-988b-5f6bc2bf83b6.png">
+</br>
+  <b>The Prompt of a Successful Transaction</b>
+</p>
+
+## Viewing Transactions
+
+Onced mined transactions for the specified node are displayed.
+
+<p align="center">
+<img width="1392" alt="image" src="https://user-images.githubusercontent.com/10171446/177382893-08fd67ab-81f6-44ea-bf8a-e07bb7e8c580.png">
+</br>
+  <b>Bob Viewing Transactions on Node1</b>
+</p>
+
+
+# Preview Images of the Blockchain Server
+
+## Viewing Transactions to be Mined
+
+<p align="center">
+<img width="1392" alt="image" src="https://user-images.githubusercontent.com/10171446/177381322-38aa44e0-5295-48ba-b4af-6a6e1dd704a9.png">
+
+</br>
+  <b>Viewing Transactions to be Mined on Node1</b>
+</p>
+
+## Mining
+
+<p align="center">
+<img width="1392" alt="image" src="https://user-images.githubusercontent.com/10171446/177381754-a8aac3ed-7823-405c-be8e-84c8d6aad069.png">
+</br>
+  <b>Mining Transaction on Node1</b>
+</p>
+
+## Configuring the Blockchain
+
+<p align="center">
+<img width="1392" alt="image" src="https://user-images.githubusercontent.com/10171446/177381969-dbb9550e-8e91-43f9-8200-6a1361cd2ec7.png"></br>
+  <b></b>
+</p>
+
+<p align="center">
+<img width="1392" alt="image" src="https://user-images.githubusercontent.com/10171446/177382117-04e51abc-a54e-45df-9ff0-fded7c311580.png">  
+<b></b>
+</p>
+
+## Syncing Node2 with Node1's Blockchain
+
+<p align="center">
+<img width="1392" alt="image" src="https://user-images.githubusercontent.com/10171446/177382265-c3cb437b-c81d-4c07-a6e8-f379546c7bda.png">
+<b></b>
+</p>
+
+
+<p align="center">
+<img width="1392" alt="image" src="https://user-images.githubusercontent.com/10171446/177382362-30d7e2a6-30cd-4c48-b4a1-6b1a41573c63.png">
+
+<b></b>
+</p>
+
 
 # Preview Video
