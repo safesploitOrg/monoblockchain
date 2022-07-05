@@ -95,7 +95,7 @@ $(function() {
             url: '/mine',
             type: 'GET',
             success: function(response) {
-                //window.location.reload();
+                window.location.reload();
             },
             error: function(error) {
                 console.log(error);

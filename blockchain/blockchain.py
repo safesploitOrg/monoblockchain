@@ -74,14 +74,6 @@ class Blockchain:
         h.update(block_string)
         return h.hexdigest()
 
-    @staticmethod
-    def valid_proof(transactions, last_hash, nonce, difficulty=MINING_DIFFICULTY):
-        guess = (str(transactions) + str(last_hash) + str(nonce)).encode('utf8')
-        h = hashlib.new('sha256')
-        h.update(guess)
-        guess_hash = h.hexdigest()
-        return guess_hash[:difficulty] == '0' * difficulty
-
     def proof_of_work(self):
         last_block = self.chain[-1]
         last_hash = self.hash(last_block)
@@ -90,6 +82,14 @@ class Blockchain:
             nonce += 1
 
         return nonce
+
+    @staticmethod
+    def valid_proof(transactions, last_hash, nonce, difficulty=MINING_DIFFICULTY):
+        guess = (str(transactions) + str(last_hash) + str(nonce)).encode('utf8')
+        h = hashlib.new('sha256')
+        h.update(guess)
+        guess_hash = h.hexdigest()
+        return guess_hash[:difficulty] == '0' * difficulty
 
     def resolve_conflicts(self):
         """
@@ -108,7 +108,7 @@ class Blockchain:
 
                 if length > max_length and self.valid_chain(chain):
                     max_length = length
-                    max_chain = chain
+                    new_chain = chain
 
         if new_chain:
             self.chain = new_chain
@@ -139,8 +139,6 @@ class Blockchain:
         return True
 
     def submit_transaction(self, sender_public_key, recipient_public_key, signature, amount):
-        # TODO: Reward the miner
-
         transaction = OrderedDict({
             'sender_public_key': sender_public_key,
             'recipient_public_key': recipient_public_key,
@@ -198,6 +196,7 @@ def get_chain():
 
 @app.route('/mine', methods=['GET'])
 def mine():
+    # We run the proof of work algorithm
     nonce = blockchain.proof_of_work()
 
     blockchain.submit_transaction(sender_public_key=MINING_SENDER,
@@ -246,7 +245,6 @@ def get_nodes():
     return jsonify(response), 200
 
 
-# TODO:
 @app.route('/nodes/resolve', methods=['GET'])
 def consensus():
     replaced = blockchain.resolve_conflicts()
@@ -284,7 +282,6 @@ def register_node():
         'message': 'Nodes have been added',
         'total_nodes': [node for node in blockchain.nodes]
     }
-
     return jsonify(response), 200
 
 
