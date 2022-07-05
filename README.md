@@ -7,7 +7,7 @@ Individually referred to as an _MB Coin_ (Mono Block Coin).
 
 
 <p align="center">
-    <img alt="MonoBlockchain-Preview" src="#">
+    <img width="238" alt="MonoBlockchain Preview" src="https://user-images.githubusercontent.com/10171446/177392317-24968898-0c8f-4944-8d33-5f0c6681ae64.png">
 </p>
 
 # Features
