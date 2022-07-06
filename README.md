@@ -10,6 +10,9 @@ Individually referred to as an _MB Coin_ (Mono Block Coin).
     <img width="238" alt="MonoBlockchain Preview" src="https://user-images.githubusercontent.com/10171446/177392317-24968898-0c8f-4944-8d33-5f0c6681ae64.png">
 </p>
 
+<p align="center">
+</p>
+
 # Features
 
 - Immutable Ledger
@@ -21,6 +24,7 @@ Individually referred to as an _MB Coin_ (Mono Block Coin).
 - Developer Friendly:
   - API-Based Backend
   - Frameworks: Bootstrap, FontAwesome, jQuery
+
 
 
 # Table of Contents
@@ -527,3 +531,4 @@ Onced mined transactions for the specified node are displayed.
 
 
 # Preview Video
+[MonoBlockchain Preview | YouTube](https://www.youtube.com/watch?v=I5-dnr9fH-Q)
