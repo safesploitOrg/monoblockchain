@@ -29,7 +29,6 @@ class Blockchain:
         self.node_id = str(uuid4()).replace('-', '')
         self.create_block(0, '00')  # Create genesis block
 
-    # https://stackoverflow.com/a/53993037/4443012
     def register_node(self, node_url):
         parsed_url = urlparse(node_url)
         if parsed_url.netloc:
@@ -40,9 +39,6 @@ class Blockchain:
             raise ValueError('Invalid URL')
 
     def create_block(self, nonce, previous_hash):
-        """
-        Add a block of transactions to the blockchain
-        """
         block = {'block_number': len(self.chain) + 1,
                  'timestamp': time(),
                  'transactions': self.transactions,
@@ -283,10 +279,6 @@ def register_node():
         'total_nodes': [node for node in blockchain.nodes]
     }
     return jsonify(response), 200
-
-
-# TODO: consider implementing DIFFICULTY function
-# TODO: consider implementing MINING_REWARD function
 
 
 if __name__ == '__main__':
