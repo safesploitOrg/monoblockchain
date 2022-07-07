@@ -1,8 +1,8 @@
 # MonoBlockchain
 
-MonoBlockchain is a decentralised proof of work cryptocurrency written in Python3. 
+MonoBlockchain is a decentralised proof of work blockchain written in Python. 
 
-Individually referred to as an _MB Coin_ (Mono Block Coin).
+The cryptocurrency individually is referred to as an _MB Coin_ (Mono Block Coin).
 
 [Preview Video](#preview-video)
 
@@ -25,7 +25,7 @@ Individually referred to as an _MB Coin_ (Mono Block Coin).
 - HTML User Interface
 - Developer Friendly:
   - API-Based Backend
-  - Frameworks: Bootstrap, FontAwesome, jQuery
+  - Frameworks: Bootstrap, DataTables, FontAwesome, jQuery
 
 
 
