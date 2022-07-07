@@ -1,6 +1,6 @@
 # MonoBlockchain
 
-MonoBlockchain is a decentralised proof of work blockchain written in Python. 
+MonoBlockchain is a decentralised proof of work blockchain with the backend written in Python. 
 
 The cryptocurrency individually is referred to as an _MB Coin_ (Mono Block Coin).
 
@@ -56,7 +56,7 @@ The cryptocurrency individually is referred to as an _MB Coin_ (Mono Block Coin)
   - [Viewing Transactions to be Mined](#viewing-transactions-to-be-mined)
   - [Mining](#mining)
   - [Configuring the Blockchain](#configuring-the-blockchain)
-  - [Syncing Node2 with Node1's Blockchain](#syncing-node2-with-node1s-blockchain)
+  - [Consensus Between Nodes Blockchain](#consensus-between-nodes-blockchain)
 - [Preview Video](#preview-video)
 
 # Setup and Usage
@@ -85,13 +85,13 @@ The cryptocurrency individually is referred to as an _MB Coin_ (Mono Block Coin)
 
 ## Initialising Servers
 
-Initialisation can be done in two-ways. One is via PyCharm the other is running multiple Python instances via the command-line.
+Initialisation can be done in two ways. One is via PyCharm the other is running multiple Python instances via the command line.
 
 ### PyCharm
 
 #### Node1 (Server)
 
-Within PyCharm under _Run/Debug Configurations > Add New Configuration > Python_ the following Configuration should be chosen:
+Within PyCharm under _Run/Debug Configurations > Add New Configuration > Python_, the following Configuration should be chosen:
 
   - Name: Node1
   - Script path: ~/PycharmProjects/MonoBlockchain/blockchain/blockchain.py
@@ -171,7 +171,10 @@ CMD.exe / Terminal / Shell
 
 ## Proof of Work
 
-MonoBlockchain is based on Proof of Work (PoW), _explanation_.
+MonoBlockchain is based on Proof of Work (PoW).
+
+  - [Investopedia](https://www.investopedia.com/terms/p/proof-work.asp)
+  - [Wikipedia](https://en.wikipedia.org/wiki/Proof_of_work#:~:text=Proof%20of%20work%20(PoW)%20is,minimal%20effort%20on%20their%20part.)
 
 ## Hashing Algorithm
 
@@ -198,7 +201,7 @@ If _block 2_ were to be maliciously altered, the previous hash on _block 3_ woul
 
 ### Explanation of Distributed P2P
 
-Distributed peer-to-peer (P2P) network ensures the network hosting the blockchain ledger is not centralised located. 
+A distributed peer-to-peer (P2P) network ensures that the blockchain ledger's network is not centralised. 
 
 <p align="center">
   <img width="575" alt="image" src="https://user-images.githubusercontent.com/10171446/172582471-6d101052-4e95-4482-b3f8-6c6bd120bf1e.png">
@@ -220,7 +223,7 @@ Having a decentralised network provides several benefits:
 
 ### Attacking Distributed P2P Network
 
-Because of the immutable ledger, the attack must modify earlier blocks to reflect the hash change. Which requires a great deal of processing power as the SHA-256 algorithm is computationally demanding.
+Because of the immutable ledger, the attack must modify earlier blocks to reflect the hash change. Which requires much processing power as the SHA-256 algorithm is computationally demanding.
 
 The attack vector of computing forged blocks is demonstrated below:
 
@@ -230,13 +233,13 @@ The attack vector of computing forged blocks is demonstrated below:
   <b>Distributed P2P Network Being Attacked</b>
 </p>
 
-However, for the example above, seven nodes maintain an independent version of the ledger. Moreover, while the attacker has successfully modify blocks and forged the ledger cryptographically to reflect an action which did not take place. However, the attack did this for a single node. Hence, the attacker only makes up 14% of the distributed P2P network. For the attacker to successfully perform their attack, they must control 51% or more of the network's nodes. 
+However, for the example above, seven nodes maintain an independent version of the ledger. The attacker has successfully modified blocks and forged the ledger cryptographically to reflect an action that did not occur. However, the attacker did this for a single node. As the attacker only makes up 14% of the distributed P2P network. For the attacker to successfully perform their attack, they must control 51% or more of the network's nodes. 
 
 See, [51% attack](https://www.investopedia.com/terms/1/51-attack.asp#:~:text=A%2051%25%20attack%20is%20an,other%20miners%20from%20completing%20blocks.).
 
 ## Mining
 
-Mining is the competitive process that verifies and adds new transactions to the blockchain for a cryptocurrency that uses the proof of work (PoW) method. The miner that wins the competition is rewarded with some amount of the currency and/or transaction fees - [source](https://www.pcmag.com/encyclopedia/term/crypto-mining#:~:text=(CRYPTOcurrency%20mining)%20The%20competitive%20process,currency%20and%2For%20transaction%20fees.).
+Mining is the competitive process that verifies and adds new transactions to the Blockchain for a cryptocurrency that uses the proof of work (PoW) method. The miner that wins the competition is rewarded with some amount of the currency and/or transaction fees - [source](https://www.pcmag.com/encyclopedia/term/crypto-mining#:~:text=(CRYPTOcurrency%20mining)%20The%20competitive%20process,currency%20and%2For%20transaction%20fees.).
 
 Consider further reading [PoW - Wikipedia](https://en.wikipedia.org/wiki/Proof_of_work).
 
@@ -244,7 +247,7 @@ The main point with mining is _hard to solve, easy to verify_.
 
 
 ### Explanation of How Mining Works (Abstract)
-[Bitcoin Mining in 4 Minutes - Computerphile](https://www.youtube.com/watch?v=wTC31ZI6QM4) will give a ver clear outline of Bitcoin mining. MonoBlockchain is based on the same concept and the PoW hashing algorithm is also SHA-256. So, there is little difference from a mining perspective between Bitcoin and MonoBlockchain.
+[Bitcoin Mining in 4 Minutes - Computerphile](https://www.youtube.com/watch?v=wTC31ZI6QM4) will give a ver clear outline of Bitcoin mining. MonoBlockchain is based on the same concept, and the PoW hashing algorithm is also SHA-256. So, there is little difference from a mining perspective between Bitcoin and MonoBlockchain.
 
 [Nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce) (number once) is an arbitrary number that can be used just once in a cryptographic communication. The nonce is used to ensure old communications cannot be reused.
 
@@ -261,26 +264,13 @@ The main point with mining is _hard to solve, easy to verify_.
 The short answer is to prevent abuse of the network. Requiring computational power to _prove work_ is a logical method for mitigating DoS attacks while still keeping the usage of the network feasible.
 
 
-<p align="center">
-  
-  </br>
-  <b></b>
-</p>
-
-
-<p align="center">
-  
-  </br>
-  <b>Mining</b>
-</p>
-
 ## Consensus Protocol
 
-The purpose of a consensus protocol is to achieve consensus between participants as to what a blockchain should contain at a given time (including new blocks).
+A consensus protocol aims to achieve agreement between nodes regarding what a blockchain should contain at a given time (including new blocks).
 
 ### First Challenege
 
-Referring back to _Attacking Distributed P2P Network_, we saw the attacker achieved a tampered version of the blockchain, but only contributed 14% of the entire distributed network. The other 86% naturally outnumbered the malicious blockchain node. 
+Referring back to _Attacking Distributed P2P Network_, we saw the attacker achieved a tampered version of the Blockchain but only contributed 14% of the entire distributed network. The other 86% naturally outnumbered the malicious blockchain node. 
 
 
 ### Second Challenege
@@ -295,41 +285,51 @@ Because each node in the distributed P2P network will mine the next block indepe
 
 The consensus to avoid overlapping nodes is to wait for a new block to be mined before synchronising with other nodes in the network. Once a node has mined a new block, the other nodes will be asked to add it to their blockchain.
 
-Essentially, _the longest chain wins_ is an consensus between nodes.
+Essentially, _the longest chain wins_ is a consensus between nodes.
 
 #### Orphan Block
 
-Another issue to be considered as a user of a blockchain PoW network are orphan blocks.
+Another issue to consider as a blockchain PoW network user is orphan blocks.
 
 An [orphan block](https://www.investopedia.com/terms/o/orphan-block-cryptocurrency.asp#:~:text=An%20orphan%20block%20is%20a,the%20shorter%20chain%20are%20orphaned.) is a block that has been solved within the blockchain network but was not accepted by the network.
 
-An orphan block can occur because, _there can be two miners who solve valid blocks simultaneously. The network uses both blocks until one chain has more verified blocks than the other. Then, the blocks in the shorter chain are orphaned._
+An orphan block can occur because _there can be two miners who solve valid blocks simultaneously. The network uses both blocks until one chain has more verified blocks. Then, the blocks in the shorter chain are orphaned._
 
-Ideally, to avoid falling victim to an orphan block, users would be adviced to wait 4-6 blocks after their transaction was verified, before considering the transaction as 'full' verified.
-
-
-<p align="center">
-  
-  </br>
-  <b></b>
-</p>
+Ideally, to avoid falling victim to an orphan block, users would be advised to wait for 4-6 blocks after their transaction was verified before considering the transaction as 'fully' verified.
 
 # Programming Logic
 
 ## How Mining Works (Technical)
+This section is still under development.
+
+The backend code is be viewed in `blockchain/blockchain.py`.
+
+### Mining Values
+
+Within `blockchain/blockchain.py` the following values are assigned:
+
+    MINING_SENDER = "Blockchain - Miner Reward"
+    MINING_REWARD = 1
+    MINING_DIFFICULTY = 2
+
+A possible future development could include writing functions to progressively change the `MINING_REWARD` and `MINING_DIFFICULTY`. However, for now the values are constant.
+
+### Hash Calculation
+
+### Proof of Work
+
+`def proof_of_work(self):` 
+
 
 ## User Interface
 
 To reduce development time with the user interface (UI), I have opted for using HTML with frameworks and host via HTTP using the [render_template](https://flask.palletsprojects.com/en/2.1.x/quickstart/#rendering-templates) function in the `Flask` library.
 
-### HTML
-
-
 
 
 ### JavaScript
 
-Within `blockchain_client/static/js/script.js` is the location for user written JavaScript which is contained within the `blockchain_client/templates/*`. The same logic applies for `blockcahin/static/js/script.js`.
+Within `blockchain_client/static/js/script.js` is the location for user-written JavaScript, which is contained within the `blockchain_client/templates/*`. The same logic applies to `blockcahin/static/js/script.js`.
 
 #### Blockchain Frontend
 
@@ -341,11 +341,11 @@ The following logic can be found in `blockchain/static/js/script.js`:
 
 ##### Transactions on the Blockchain
 
-Within `blockchain/static/js/script.js` is the timestamp for transactions
+Within `blockchain/static/js/script.js` is the timestamp for transactions.
 
     formattedTimestamp = date.toLocaleTimeString('en-GB', options);
 
-Currently the timezone is configured to British English `en-GB`, but feel free to change this, possibly to `UTC`.
+Currently, the timezone is configured to British English `en-GB`, but feel free to change this, possibly to `UTC`.
 
 An outline of the `toLocaleTimeString()` function available via [Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString).
 
@@ -395,7 +395,7 @@ The `value` is changeable when generating a transaction, as the client allows ch
 </p>
 
 ## Encoding
-Throughout the project when communicating between the node (server) and client data is passed via JSON. Because of this, data is converted into a String and then encoded.
+Throughout the project, communication between the node (server) and client data is passed via JSON. Because of this, data is converted into a String and then encoded.
 
 ### Public-key
 
@@ -410,10 +410,10 @@ SHA-256 hashes are encoded using UTF-8, as indicated within `blockchain/blockcha
       h = SHA.new(str(transaction).encode('utf8'))
 
 ## Verification
-Because MonoBlockchain was developed for educational purposes some lightweight basic validation choices were made, which do not offer real-world protection.
+Because MonoBlockchain was developed for educational purposes, some lightweight basic validation choices were made, which do not offer real-world protection.
 
 ### New Transaction
-Within `blockchain/blockchain.py` the following logic for validating a new transaction has been implemented
+Within `blockchain/blockchain.py`, the following logic for validating a new transaction has been implemented.
 
     def new_transaction():
         values = request.form
@@ -423,8 +423,6 @@ Within `blockchain/blockchain.py` the following logic for validating a new trans
             return 'Missing values', 400
 
 Please take care with `if not all(k in values for k in required):` as the logic was only to check if all values were present, nothing more. Erroneous values can be entered into the blockchain.
-
-
 
 
 # Preview Images of the Blockchain Client
@@ -509,26 +507,25 @@ Onced mined transactions for the specified node are displayed.
 
 <p align="center">
 <img width="1392" alt="image" src="https://user-images.githubusercontent.com/10171446/177381969-dbb9550e-8e91-43f9-8200-6a1361cd2ec7.png"></br>
-  <b></b>
+  <b>Configuring the Blockchain Node</b>
 </p>
 
 <p align="center">
 <img width="1392" alt="image" src="https://user-images.githubusercontent.com/10171446/177382117-04e51abc-a54e-45df-9ff0-fded7c311580.png">  
-<b></b>
+<b>Configuring the Blockchain Node</b>
 </p>
 
-## Syncing Node2 with Node1's Blockchain
+## Consensus Between Nodes Blockchain
 
 <p align="center">
 <img width="1392" alt="image" src="https://user-images.githubusercontent.com/10171446/177382265-c3cb437b-c81d-4c07-a6e8-f379546c7bda.png">
-<b></b>
+<b>Consensus Between Node 1 and Node 2</b>
 </p>
 
 
 <p align="center">
 <img width="1392" alt="image" src="https://user-images.githubusercontent.com/10171446/177382362-30d7e2a6-30cd-4c48-b4a1-6b1a41573c63.png">
-
-<b></b>
+<b>Consensus Between Node 1 and Node 2</b>
 </p>
 
 
